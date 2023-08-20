@@ -1,0 +1,8 @@
+<div [ngClass]="{'withoutIcon': !icon}" class="custom-input">
+  <input name="username" [type]="type" [(ngModel)]="data[id]" required>
+  <i *ngIf="icon" [class]="icon"></i>
+  <button *ngIf="isPassword" type="button" (click)="togglePasswordVisibility()"
+          [title]="(isVisiblePassword ? 'login.hidePassword' : 'login.showPassword') | translate"><i
+            [ngClass]="{'fa-regular': isVisiblePassword, 'fa-solid': !isVisiblePassword}" class="fa-eye"></i></button>
+  <i class="label">{{ label| translate }}</i>
+</div>
