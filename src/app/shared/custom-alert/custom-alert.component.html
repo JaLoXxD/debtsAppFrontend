@@ -1,0 +1,9 @@
+<div class="alert-container" *ngIf="showAlerts">
+  <div class="alerts">
+    <div class="alert" *ngFor="let alert of alerts; let i = index" [style.background-color]="alert.color" [@alertAnimation]>
+      <div class="close" (click)="removeError(i)"><i class="fa-solid fa-circle-xmark"></i></div>
+      <div class="icon"><i class="fa-solid" [ngClass]="alert.icon"></i></div>
+      <div class="message">{{ alert.message }}</div>
+    </div>
+  </div>
+</div>
