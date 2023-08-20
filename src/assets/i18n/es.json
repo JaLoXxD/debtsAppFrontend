@@ -1,0 +1,19 @@
+{
+  "buttons": {
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "send": "Enviar"
+  },
+  "login": {
+    "title": "Inicio de sesión",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña"
+  },
+  "recoverPassword": {
+    "title": "Recuperar contraseña",
+    "userId": "Nombre de usuario o correo",
+    "success": "Se ha enviado un correo electrónico a {{email}} con su contraseña temporal"
+  }
+}

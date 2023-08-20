@@ -1,0 +1,19 @@
+{
+  "buttons": {
+    "login": "Login",
+    "logout": "Logout",
+    "send": "Send"
+  },
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "showPassword": "Show Password",
+    "hidePassword": "Hide Password"
+  },
+  "recoverPassword": {
+    "title": "Recover Password",
+    "userId": "Username or email",
+    "success": "Email send successfully to {{email}}, please check your inbox"
+  }
+}
