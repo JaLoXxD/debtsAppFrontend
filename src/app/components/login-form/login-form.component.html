@@ -1,0 +1,13 @@
+<app-auth-container>
+  <form (ngSubmit)="login()" #f="ngForm">
+    <h2>{{"login.title" | translate}}</h2>
+    <div class="inputs w-100 m-auto">
+      <app-custom-input icon="icon fa-solid fa-user" label="login.username" type="text" [data]="userInfo" id="username" ></app-custom-input>
+      <app-custom-input class="mt-4" icon="icon fa-solid fa-lock" label="login.password" type="password" [data]="userInfo" id="password"></app-custom-input>
+      <div class="options mt-2">
+        <a routerLink="/auth/recover-password">{{ "recoverPassword.title" | translate}}</a>
+      </div>
+    </div>
+    <app-custom-button type="submit" [isLoading]="isLoading" label="buttons.login" [centered]="true"></app-custom-button>
+  </form>
+</app-auth-container>
