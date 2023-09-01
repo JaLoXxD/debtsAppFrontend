@@ -1,0 +1,11 @@
+<div class="lang-container" appDropdown>
+  <div class="lang-selector">
+      <img [src]="getCurrentLang().ICON" (click)="toogleOptions()" />
+  </div>
+  <div class="lang-options"> 
+      <div class="option" *ngFor="let option of appConstants.LANG_OPTIONS" (click)="setLang(option.LANG)">
+          <img [src]="option.ICON" />
+          <p>{{option.LABEL | translate}}</p>
+      </div>
+  </div>
+</div>
