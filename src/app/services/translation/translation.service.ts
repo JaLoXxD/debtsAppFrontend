@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from "@ngx-translate/core";
-import { constants } from "src/app/constants";
+import { constants } from "src/app/utils/constants";
 import { LangModel } from "src/app/models";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
-  private _currentLang: LangModel;
+  currentLang: LangModel;
   appConstants: typeof constants = constants;
 
   constructor(private _translate: TranslateService) {
-    this._currentLang = constants.LANG_OPTIONS.filter((lang: LangModel) => lang.LANG === this._translate.currentLang)[0];
+    this._translate.addLangs(constants.LANG_OPTIONS.map((lang: LangModel) => lang.LANG));
+    this.currentLang = constants.LANG_OPTIONS.filter((lang: LangModel) => lang.LANG === constants.DEFAULT_LANG)[0];
   }
 
   loadDefaultLang(): void {
@@ -20,16 +21,24 @@ export class TranslationService {
   }
 
   changeLang(lang: string): void {
-    this._translate.use(lang);
-    this.setCurrentLang();
+    this._translate.use(lang).subscribe(() => {
+      this.setCurrentLang();
+    });
   }
 
   setCurrentLang(): void {
     const currLang = this._translate.currentLang;
-    this._currentLang = constants.LANG_OPTIONS.filter((lang: LangModel) => lang.LANG === currLang)[0];
+    this.currentLang = constants.LANG_OPTIONS.filter((lang: LangModel) => lang.LANG === currLang)[0];
   }
 
   getCurrentLang(): LangModel {
-    return this._currentLang;
+    if(!this.currentLang){
+      this.setCurrentLang();
+    }
+    return this.currentLang;
+  }
+
+  getCurrentPrefix(): string {
+    return this.currentLang?.PREFIX || constants.LANG_OPTIONS.filter((lang: LangModel) => lang.LANG === constants.DEFAULT_LANG)[0].PREFIX;
   }
 }
