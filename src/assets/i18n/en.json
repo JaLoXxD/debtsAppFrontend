@@ -1,19 +1,52 @@
 {
-  "buttons": {
-    "login": "Login",
-    "logout": "Logout",
-    "send": "Send"
+  "general": {
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
   },
-  "login": {
-    "title": "Login",
+  "lang": {
+    "es": "Spanish",
+    "en": "English"
+  },
+  "buttons": {
+    "login": "Log in",
+    "logout": "Log out",
+    "send": "Send",
+    "register": "Register"
+  },
+  "errors": {
+    "required": "This field is required",
+    "server": "An error occurred on the server, please try again later",
+    "client": "An error occurred, please try again later"
+  },
+  "userInfo": {
     "username": "Username",
     "password": "Password",
-    "showPassword": "Show Password",
-    "hidePassword": "Hide Password"
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "confirmPassword": "Confirm password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "secondName": "Second name",
+    "secondLastName": "Second last name",
+    "email": "Email",
+    "phone": "Phone",
+    "salary": "Salary"
+  },
+  "login": {
+    "title": "Log in",
+    "noAccount": "Don't have an account?",
+    "register": "Register"
+  },
+  "register": {
+    "title": "User Registration"
   },
   "recoverPassword": {
-    "title": "Recover Password",
+    "title": "Recover password",
     "userId": "Username or email",
-    "success": "Email send successfully to {{email}}, please check your inbox"
+    "success": "An email has been sent to {{email}} with your temporary password"
+  },
+  "updatePassword": {
+    "title": "Update password",
+    "success": "Your password has been updated successfully"
   }
 }

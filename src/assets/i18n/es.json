@@ -1,19 +1,53 @@
 {
+  "general": {
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña"
+  },
+  "lang": {
+    "es": "Español",
+    "en": "Inglés"
+  },
   "buttons": {
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
-    "send": "Enviar"
+    "send": "Enviar",
+    "register": "Registrarse"
+  },
+  "errors": {
+    "required": "Este campo es obligatorio",
+    "server": "Ocurrió un error en el servidor, por favor intente más tarde",
+    "client": "Ocurrió un error, por favor intente más tarde"
+  },
+  "userInfo": {
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "currentPassword": "Contraseña actual",
+    "newPassword": "Nueva contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "secondName": "Segundo nombre",
+    "secondLastName": "Segundo apellido",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "salary": "Salario"
   },
   "login": {
     "title": "Inicio de sesión",
-    "username": "Nombre de usuario",
-    "password": "Contraseña",
-    "showPassword": "Mostrar contraseña",
-    "hidePassword": "Ocultar contraseña"
+    "noAccount": "¿No tienes una cuenta?",
+    "register": "Regístrate"
+  },
+  "register":{
+    "title": "Registro de Usuario"
+
   },
   "recoverPassword": {
     "title": "Recuperar contraseña",
     "userId": "Nombre de usuario o correo",
     "success": "Se ha enviado un correo electrónico a {{email}} con su contraseña temporal"
+  },
+  "updatePassword": {
+    "title": "Actualizar contraseña",
+    "success": "Se ha actualizado su contraseña"
   }
 }
