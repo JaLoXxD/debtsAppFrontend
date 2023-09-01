@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from "rxjs";
-import { constants } from "src/app/constants";
+import { constants } from "src/app/utils/constants";
 import { AlertModel, GenericResponseModel } from "src/app/models";
 
 @Injectable({

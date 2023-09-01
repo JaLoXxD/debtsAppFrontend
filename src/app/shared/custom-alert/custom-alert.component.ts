@@ -1,6 +1,6 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, HostBinding } from '@angular/core';
-import { constants } from "src/app/constants";
+import { constants } from "src/app/utils/constants";
 import { AlertModel } from "src/app/models";
 import { AlertService } from "src/app/services";
 
