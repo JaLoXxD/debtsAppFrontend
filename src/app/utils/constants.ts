@@ -4,12 +4,14 @@ export const constants = {
     {
         LANG: "es",
         ICON: "assets/img/lang/es.png",
-        LABEL: "lang.es"
+        LABEL: "lang.es",
+        PREFIX: "es-ES"
     },
     {
         LANG: "en",
         ICON: "assets/img/lang/en.png",
-        LABEL: "lang.en"
+        LABEL: "lang.en",
+        PREFIX: "en-US"
     }
   ],
   ALERTS: {

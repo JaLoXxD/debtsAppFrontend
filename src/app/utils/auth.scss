@@ -1,0 +1,11 @@
+@import 'src/app/utils/variables.scss';
+
+::ng-deep .lang-options {
+  background-color: $darkBlue;
+  color: $white;
+  .option {
+    &:hover {
+      background-color: $darkBlueHover !important;
+    }
+  }
+}
