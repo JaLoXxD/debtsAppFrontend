@@ -1,4 +1,4 @@
-@import "src/app/variables.scss";
+@import "src/app/utils/variables.scss";
 
 .login-container {
   display: flex;
@@ -24,6 +24,12 @@
     margin-bottom: 50px;
     text-align: center;
   }
+}
+
+.big-container {
+  width: 60vw;
+  height: auto;
+  max-height: 90vh;
 }
 
 ::ng-deep .back-btn {
@@ -72,37 +78,42 @@
       }
     }
   }
+  p {
+    color: $white;
+  }
+  a {
+    color: $lightBlue !important;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all .2s ease-in-out;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      background-color: $lightBlue;
+      transition: all .2s ease-in-out;
+    }
+    &:hover {
+      color: $lightBlue;
+      &::before {
+        width: 100%;
+      }
+    }
+  }
   .options {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
     width: 100%;
-    a {
-      color: $lightBlue;
-      text-decoration: none;
-      font-size: 1em;
-      font-weight: 500;
-      transition: all .2s ease-in-out;
-      position: relative;
-      &::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        width: 0;
-        height: 2px;
-        left: 0;
-        right: 0;
-        margin: 0 auto;
-        background-color: $lightBlue;
-        transition: all .2s ease-in-out;
-      }
-      &:hover {
-        &::before {
-          width: 100%;
-        }
-      }
-    }
   }
 }
 ::ng-deep .custom-input {
@@ -162,8 +173,21 @@
   }
 }
 
+::ng-deep .custom-input.invalid {
+  input {
+    border-color: $danger;
+  }
+  i.label,
+  i.icon,
+  button i,
+  input:focus ~ i.label,
+  input.with-content ~ i.label {
+    color: $danger;
+  }
+}
+
 ::ng-deep .custom-input input:focus ~ i.label,
-::ng-deep .custom-input input:valid ~ i.label {
+::ng-deep .custom-input input.with-content ~ i.label {
   top: 15px;
   transform: translateY(-20px);
   font-size: 13px;
@@ -173,6 +197,9 @@
 @media screen and (max-width: 1400px) {
   .login-container {
     width: 40vw;
+  }
+  .big-container {
+    width: 80vw !important;
   }
 }
 

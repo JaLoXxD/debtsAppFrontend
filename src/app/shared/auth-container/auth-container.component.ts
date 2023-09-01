@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-auth-container',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth-container.component.scss']
 })
 export class AuthContainerComponent {
-
+  @Input() bigContainer: boolean = false;
 }
