@@ -1,12 +1,31 @@
+@import "src/app/utils/variables.scss";
+
 :host {
   display: block;
 }
 
-.withoutIcon{
+.without-icon {
   input {
-    padding: 15px 10px 7.5px !important;
+    padding: 15px 15px 7.5px;
   }
-  i{
-    padding-left: 10px;
+  i.label {
+    padding-left: 15px;
   }
+  input[type="password"] {
+    padding: 15px 40px 7.5px 15px;
+    button {
+      position: absolute;
+      height: 100%;
+      width: 40px;
+      margin: 0;
+      right: 0;
+      color: $lightBlue;
+      border: 0;
+      background-color: transparent;
+    }
+  }
+}
+
+.required-error {
+  color: $danger;
 }

@@ -1,8 +1,9 @@
-<div [ngClass]="{'withoutIcon': !icon}" class="custom-input">
-  <input name="username" [type]="type" [(ngModel)]="data[id]" required>
+<div class="custom-input" [ngClass]="{'invalid': isInvalidInput(), 'without-icon': !icon}">
+  <input [ngClass]="{'with-content': data[id]}" [name]="id" [type]="type" [(ngModel)]="data[id]" provide-parent-form #idModel="ngModel" [required]="required">
   <i *ngIf="icon" [class]="icon"></i>
   <button *ngIf="isPassword" type="button" (click)="togglePasswordVisibility()"
-          [title]="(isVisiblePassword ? 'login.hidePassword' : 'login.showPassword') | translate"><i
+          [title]="(isVisiblePassword ? 'general.hidePassword' : 'general.showPassword') | translate"><i
             [ngClass]="{'fa-regular': isVisiblePassword, 'fa-solid': !isVisiblePassword}" class="fa-eye"></i></button>
-  <i class="label">{{ label| translate }}</i>
+  <i class="label">{{ label| translate }}<span *ngIf="required">*</span></i>
 </div>
+<span *ngIf="form.invalid && isInvalidInput()" class="required-error">{{ "errors.required" | translate }}</span>
