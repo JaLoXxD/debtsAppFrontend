@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { LoginViewComponent } from './views/login-view/login-view.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HttpClient } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClient } from "@angular/common/http";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpClientModule } from "@angular/common/http";
@@ -22,6 +22,16 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { CreateDebtViewComponent } from './views/create-debt-view/create-debt-view.component';
 import { CustomInputComponent } from './shared/custom-input/custom-input.component';
 import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
+import { ProvideParentFormDirective } from './shared/directives/provide-parent-form.directive';
+import { HttpErrorInterceptor } from "./services/error/http-error.interceptor.service";
+import { BaseComponent } from "./shared/base/base.component";
+import { UpdatePasswordViewComponent } from './views/update-password-view/update-password-view.component';
+import { UpdatePasswordFormComponent } from './components/update-password-form/update-password-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { RegisterViewComponent } from './views/register-view/register-view.component';
+import { LangSelectorComponent } from './components/lang-selector/lang-selector.component';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
+import { AuthInterceptor } from './services/auth/auth.interceptor.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    BaseComponent,
     LoginViewComponent,
     LoginFormComponent,
     NavbarComponent,
@@ -40,7 +51,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     SpinnerComponent,
     CreateDebtViewComponent,
     CustomInputComponent,
-    CustomButtonComponent
+    CustomButtonComponent,
+    ProvideParentFormDirective,
+    UpdatePasswordViewComponent,
+    UpdatePasswordFormComponent,
+    RegisterFormComponent,
+    RegisterViewComponent,
+    LangSelectorComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
@@ -57,7 +75,18 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
