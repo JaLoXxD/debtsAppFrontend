@@ -4,6 +4,10 @@
   position: relative;
 }
 
+.with-navbar {
+  height: calc(100vh - 56px);
+}
+
 router-outlet {
   width: 100%;
   height: 100%;
