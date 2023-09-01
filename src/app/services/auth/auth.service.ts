@@ -2,7 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
-import { LoginModel, LoginResponseModel, RecoverPasswordModel, RecoverPasswordResponseModel } from "src/app/models";
+import { LoginModel, LoginResponseModel, RecoverPasswordModel, RecoverPasswordResponseModel, RegisterModel } from "src/app/models";
+import { UserResponseModel } from "src/app/models/user/userResponse.model";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -12,7 +13,11 @@ export class AuthService {
   private token: string = "";
   public redirectUrl: string = "";
 
-  constructor(private _http: HttpClient, private _router: Router) { }
+  constructor(private _http: HttpClient, private _router: Router) {}
+
+  register(userInfo: RegisterModel): Observable<UserResponseModel> {
+    return this._http.post<UserResponseModel>(`${environment.apiAuthURL}/register`, userInfo);
+  }
 
   login(userInfo: LoginModel): Observable<LoginResponseModel> {
     return this._http.post<LoginResponseModel>(`${environment.apiAuthURL}/login`, userInfo);
