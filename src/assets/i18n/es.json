@@ -1,17 +1,44 @@
 {
   "general": {
     "showPassword": "Mostrar contraseña",
-    "hidePassword": "Ocultar contraseña"
+    "hidePassword": "Ocultar contraseña",
+    "search": "Buscar",
+    "noEntriesFound": "No se encontraron registros",
+    "chooseAnOption": "Seleccione una opción",
+    "number": "N°",
+    "actions": "Acciones",
+    "imagePreview": "Vista previa"
   },
   "lang": {
     "es": "Español",
     "en": "Inglés"
   },
+  "navbar": {
+    "home": "Inicio",
+    "debt":{
+      "title": "Deudas",
+      "create": "Crear deuda",
+      "list": "Ver deudas"
+    }
+  },
   "buttons": {
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
     "send": "Enviar",
-    "register": "Registrarse"
+    "register": "Registrarse",
+    "create": "Crear",
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "payments": "Pagos",
+    "accept": "Aceptar",
+    "cancel": "Cancelar"
+  },
+  "messages": {
+    "confirmDelete": "¿Estás seguro que deseas eliminar el registro seleccionado?",
+    "noData": "No hay datos para mostrar",
+    "chooseImage": "Seleccione una imagen",
+    "confirmDebtCreation": "Se creará una deuda de {{months}} meses con cuotas mensuales de: ${{monthlyFee}}, ¿está seguro que desea continuar?"
   },
   "errors": {
     "required": "Este campo es obligatorio",
@@ -32,6 +59,28 @@
     "phone": "Teléfono",
     "salary": "Salario"
   },
+  "debtInfo": {
+    "name": "Nombre",
+    "description": "Descripción",
+    "category": "Categoría",
+    "priority": "Prioridad",
+    "startDate": "Fecha de inicio",
+    "endDate": "Fecha de fin",
+    "collector": "Cobrador",
+    "amount": "Monto",
+    "termInMonths": "Plazo en meses"
+  },
+  "debtPayment": {
+    "id": "ID",
+    "name": "Nombre",
+    "description": "Descripción",
+    "payed": "Pagado",
+    "paymentDate": "Fecha de Pago",
+    "maxPaymentDate": "Fecha Máxima de Pago",
+    "balanceBeforePay": "Saldo Antes de Pago",
+    "balanceAfterPay": "Saldo Después de Pago",
+    "amount": "Monto"
+  },
   "login": {
     "title": "Inicio de sesión",
     "noAccount": "¿No tienes una cuenta?",
@@ -49,5 +98,25 @@
   "updatePassword": {
     "title": "Actualizar contraseña",
     "success": "Se ha actualizado su contraseña"
-  }
+  },
+  "createDebt": {
+    "title": "Crear deuda",
+    "success": "Se ha creado la deuda"
+  },
+  "editDebt": {
+    "title": "Editar deuda",
+    "success": "Se ha editado la deuda"
+  },
+  "editDebtPayment": {
+    "title": "Editar pago",
+    "success": "Se ha editado el pago"
+  },
+  "paginator": {
+    "itemsPerPageLabel": "Elementos por página:",
+    "nextPageLabel": "Siguiente página",
+    "previousPageLabel": "Página anterior",
+    "firstPageLabel": "Primera página",
+    "lastPageLabel": "Última página",
+    "getRangeLabel": "{{start}} - {{end}} de {{total}}"
+  } 
 }

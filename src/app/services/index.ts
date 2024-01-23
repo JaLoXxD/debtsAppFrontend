@@ -3,3 +3,7 @@ export * from './auth/auth.service';
 export * from './auth/auth.guard';
 export * from './user/user.service';
 export * from './alert/alert.service';
+export * from './modal/modal.service';
+export * from './debt/debt.service';
+export * from './debt-category/debt-category.service';
+export * from './debt-priority/debt-priority.service';

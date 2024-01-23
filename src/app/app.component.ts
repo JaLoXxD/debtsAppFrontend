@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService, TranslationService, UserService } from "./services";
+import { AuthService, ModalService, TranslationService, UserService } from "./services";
 import { Router } from '@angular/router';
+import { ImageAsset } from "./models";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'debts-app';
 
-  constructor(private _translateService: TranslationService, private _authService: AuthService, private _userService: UserService, private _router: Router) {
+  constructor(private _translateService: TranslationService, private _authService: AuthService, private _modalService: ModalService, private _userService: UserService, private _router: Router) {
   }
 
   ngOnInit(): void {
@@ -36,5 +37,25 @@ export class AppComponent {
 
   isLoggedIn(): boolean {
     return this._authService.isLoggedIn();
+  }
+
+  get visible() : Boolean {
+    return this._modalService.visible;
+  }
+
+  get showAcceptBtn() : Boolean {
+    return this._modalService.showAcceptBtn
+  }
+
+  get showCancelBtn() : Boolean {
+    return this._modalService.showCancelBtn
+  }
+
+  get icon() : ImageAsset	| null {
+    return this._modalService.icon;
+  }
+
+  get modalTitle() : string {
+    return this._modalService.title;
   }
 }

@@ -1,6 +1,7 @@
 <app-navbar *ngIf="isLoggedIn()"></app-navbar>
-<div class="container" [ngClass]="{'with-navbar': isLoggedIn()}">
+<div class="container py-4" [ngClass]="{'with-navbar': isLoggedIn()}">
   <router-outlet></router-outlet>
   <app-custom-alert></app-custom-alert>
+  <app-custom-modal [title]="modalTitle" [icon]="icon" [showModal]="visible" [enableAcceptBtn]="showAcceptBtn" [enableCancelBtn]="showCancelBtn"></app-custom-modal>
   <app-lang-selector></app-lang-selector>
 </div>

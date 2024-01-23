@@ -1,17 +1,44 @@
 {
   "general": {
     "showPassword": "Show password",
-    "hidePassword": "Hide password"
+    "hidePassword": "Hide password",
+    "search": "Search",
+    "noEntriesFound": "No entries found",
+    "chooseAnOption": "Choose an option",
+    "number": "N°",
+    "actions": "Actions",
+    "imagePreview": "Image preview"
   },
   "lang": {
     "es": "Spanish",
     "en": "English"
   },
+  "navbar": {
+    "home": "Home",
+    "debt":{
+      "title": "Debts",
+      "create": "Create debt",
+      "list": "Debts list"
+    }
+  },
   "buttons": {
     "login": "Log in",
     "logout": "Log out",
     "send": "Send",
-    "register": "Register"
+    "register": "Register",
+    "create": "Create",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "payments": "Payments",
+    "accept": "Accept",
+    "cancel": "Cancel"
+  },
+  "messages": {
+    "confirmDelete": "Are you sure you want to delete the selected record?",
+    "noData": "Not results found",
+    "chooseImage": "Choose an image",
+    "confirmDebtCreation": "A debt of {{months}} months will be created with monthly fees of: ${{monthlyFee}}, are you sure you want to continue?"
   },
   "errors": {
     "required": "This field is required",
@@ -32,6 +59,28 @@
     "phone": "Phone",
     "salary": "Salary"
   },
+  "debtInfo": {
+    "name": "Name",
+    "description": "Description",
+    "category": "Category",
+    "priority": "Priority",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "collector": "Collector",
+    "amount": "Amount",
+    "termInMonths": "Term in months"
+  },
+  "debtPayment": {
+    "id": "ID",
+    "name": "Name",
+    "description": "Description",
+    "payed": "Payed",
+    "paymentDate": "Payment Date",
+    "maxPaymentDate": "Max Payment Date",
+    "balanceBeforePay": "Balance Before Pay",
+    "balanceAfterPay": "Balance After Pay",
+    "amount": "Amount"
+  },
   "login": {
     "title": "Log in",
     "noAccount": "Don't have an account?",
@@ -48,5 +97,25 @@
   "updatePassword": {
     "title": "Update password",
     "success": "Your password has been updated successfully"
+  },
+  "createDebt": {
+    "title": "Create debt",
+    "success": "The debt has been created successfully"
+  },
+  "editDebt": {
+    "title": "Edit debt",
+    "success": "The debt has been updated successfully"
+  },
+  "editDebtPayment" : {
+    "title": "Edit debt payment",
+    "success": "The debt payment has been updated successfully"
+  },
+  "paginator": {
+    "itemsPerPageLabel": "Items per page:",
+    "nextPageLabel": "Next page",
+    "previousPageLabel": "Previous page",
+    "firstPageLabel": "First page",
+    "lastPageLabel": "Last page",
+    "getRangeLabel": "{{start}} - {{end}} of {{total}}"
   }
 }

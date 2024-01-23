@@ -1,0 +1,224 @@
+@import "src/app/utils/variables.scss";
+
+.login-container {
+  display: flex;
+  margin: auto;
+  padding: 70px 30px;
+  width: 28vw;
+  height: 60vh;
+  max-height: 600px;
+  align-items: center;
+  justify-content: center;
+  background-color: $darkBlue;
+  border-radius: 30px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  ::ng-deep h2{
+    color: $white;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+}
+
+.big-container {
+  width: 60vw;
+  height: auto;
+  max-height: 90vh;
+}
+
+::ng-deep .auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  .custom-input {
+    position: relative;
+    width: 100%;
+    input, .mat-mdc-select-trigger {
+      background: $darkBlueBackground;
+      border: 2px solid $lightBlue;
+      color: $white;
+      &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px $darkBlueBackground inset !important;
+        background-color: white !important;
+        -webkit-text-fill-color: $white !important;
+      }
+      .mat-mdc-select-placeholder {
+        color: $white;
+      }
+    }
+    i.label,
+    i.icon {
+      color: $lightBlue;
+    }
+    button {
+      color: $lightBlue;
+    }
+  }
+  button[type="submit"] {
+    background-color: $lightBlue;
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: 2px solid $lightBlue;
+    color: $white;
+    transition: all .2s ease-in-out;
+    height: 60px;
+    width: 100%;
+    &:hover {
+      background-color: $darkBlue;
+      border: 2px solid $lightBlue;
+      color: $lightBlue;
+      .spinner {
+        color: $lightBlue;
+      }
+    }
+  }
+  p {
+    color: $white;
+  }
+  a {
+    color: $lightBlue !important;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all .2s ease-in-out;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      background-color: $lightBlue;
+      transition: all .2s ease-in-out;
+    }
+    &:hover {
+      color: $lightBlue;
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    width: 100%;
+  }
+}
+::ng-deep .auth-form .custom-input {
+  position: relative;
+  width: 100%;
+  input {
+    position: relative;
+    width: 100%;
+    background: $darkBlueBackground;
+    border: 2px solid $lightBlue;
+    outline: none;
+    padding: 15px 40px 7.5px;
+    border-radius: 10px;
+    color: $white;
+    font-weight: 500;
+    font-size: 1em;
+    height: 61px;
+    box-sizing: none;
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px $darkBlueBackground inset !important;
+      background-color: white !important;
+      -webkit-text-fill-color: $white !important;
+    }
+  }
+  i.label,
+  i.icon {
+    position: absolute;
+    left: 0;
+    padding: 15px 10px;
+    font-style: normal;
+    color: $lightBlue;
+    transition: 0.5s;
+    pointer-events: none;
+  }
+  i.icon {
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+  }
+  i.label {
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 40px;
+    line-height: 13px;
+  }
+  button {
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    margin: 0;
+    right: 0;
+    color: $lightBlue;
+    border: 0;
+    background-color: transparent;
+  }
+}
+
+::ng-deep .auth-form .custom-input.invalid {
+  input {
+    border-color: $danger;
+  }
+  i.label,
+  i.icon,
+  button i,
+  input:focus ~ i.label,
+  input.with-content ~ i.label {
+    color: $danger;
+  }
+}
+
+::ng-deep .auth-form .custom-input input:focus ~ i.label,
+::ng-deep .auth-form .custom-input input.with-content ~ i.label {
+  top: 15px;
+  transform: translateY(-20px);
+  font-size: 13px;
+  color: $lightBlue;
+}
+
+@media screen and (max-width: 1400px) {
+  .login-container {
+    width: 40vw;
+  }
+  .big-container {
+    width: 80vw !important;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .login-container {
+    width: 60vw;
+    ::ng-deep h2 {
+      font-size: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .login-container {
+    width: 80vw;
+    ::ng-deep h2 {
+      font-size: 35px;
+    }
+  }
+}

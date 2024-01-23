@@ -1,0 +1,8 @@
+<div class="photoBtns">
+  <input id="imgFile" type="file" accept="image/*" (change)="inputImage($event)" />
+  <label for="imgFile" id="imgLabel"
+    ><i [class]="icon"></i><span id="imgText">{{ imgLabel | translate }}</span>
+    <button id="removePhotoBtn" type="button" [ngClass]="{'show-remove-btn': showRemoveBtn}" class="btn customBtn" (click)="removePhoto()">X</button>
+  </label>
+  <span *ngIf="data[id]" class="preview-icon" title="{{ 'general.imagePreview' | translate }}"><i class="fa-solid fa-images" (click)="previewImage()"></i></span>
+</div>

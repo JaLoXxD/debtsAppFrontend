@@ -7,3 +7,7 @@ nav {
 .logout-btn {
   background-color: $lightBlue;
 }
+
+.dropdown.active ul {
+  display: block;
+}

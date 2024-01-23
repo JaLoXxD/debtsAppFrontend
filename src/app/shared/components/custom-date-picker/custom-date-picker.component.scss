@@ -1,0 +1,49 @@
+@import "src/app/utils/variables.scss";
+@import '@angular/material/theming';
+
+.without-icon {
+  input {
+    padding: 15px 15px 7.5px;
+  }
+  ::ng-deep .mdc-icon-button {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  i.label {
+    padding-left: 15px;
+  }
+}
+
+.with-static-label {
+  ::ng-deep .mdc-icon-button {
+    top: 64%;
+  }
+}
+
+::ng-deep .mat-datepicker-content-container {
+  background-color: $darkBlue !important;
+}
+
+::ng-deep {
+  .mat-calendar-body-cell-content,
+  .mat-calendar-table-header th,
+  .mat-mdc-button.mat-unthemed,
+  .mat-datepicker-content .mat-calendar-previous-button, 
+  .mat-datepicker-content .mat-calendar-next-button,
+  .mat-calendar-body-label {
+    color: $white !important;
+  }
+  .mat-calendar-arrow {
+    fill: $white !important;
+  }
+  .mat-calendar-body-selected {
+    background-color: $lightBlue !important;
+  }
+
+  @media (hover: hover){
+    .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+      background-color: $lightBlueHover !important;
+    }
+  }
+} 

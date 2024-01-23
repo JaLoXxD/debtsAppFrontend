@@ -1,0 +1,20 @@
+<div class="custom-input" [ngClass]="{'invalid': isInvalidInput(), 'without-icon': !icon, 'with-static-label': !dynamicLabel}">
+  <ng-container *ngIf="type !== 'currency'">
+    <span class="static-label" *ngIf="!dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></span>
+    <input *ngIf="type !== 'number'" [ngClass]="{'with-content': data[id]}" [name]="id" [type]="type" [(ngModel)]="data[id]" (blur)="onBlur($event)" provide-parent-form #idModel="ngModel" [required]="required">
+    <input *ngIf="type === 'number'" [ngClass]="{'with-content': data[id]}" [name]="id" [type]="type" [(ngModel)]="data[id]" (keypress)="preventE($event)" (blur)="onBlur($event)" provide-parent-form #idModel="ngModel" [required]="required">
+    <i *ngIf="icon" [class]="icon"></i>
+    <button *ngIf="isPassword" type="button" (click)="togglePasswordVisibility()"
+            [title]="(isVisiblePassword ? 'general.hidePassword' : 'general.showPassword') | translate"><i
+              [ngClass]="{'fa-regular': isVisiblePassword, 'fa-solid': !isVisiblePassword}" class="fa-eye"></i></button>
+    <i class="label" *ngIf="dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></i>
+  </ng-container>
+  <ng-container *ngIf="type === 'currency'">
+    <span class="static-label" *ngIf="!dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></span>
+    <span class="currency">$</span>
+    <input [ngClass]="{'with-content': data[id]}" class="currency-input" [name]="id" type="number" (keypress)="preventE($event)" [(ngModel)]="data[id]" (blur)="onBlur($event)" provide-parent-form #idModel="ngModel" [required]="required">
+    <i *ngIf="icon" [class]="icon"></i>
+    <i class="label" *ngIf="dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></i>
+  </ng-container>
+</div>
+<span *ngIf="form.invalid && isInvalidInput()" class="required-error">{{ "errors.required" | translate }}</span>

@@ -1,0 +1,14 @@
+<div [ngClass]="{'hide': !showModal, 'show': showModal}" appCloseModal class="modal-container" (toggleModal)="toggleModal($event)">
+  <div class="modal">
+    <img *ngIf="icon" [src]="icon.src" [alt]="icon.alt" class="icon">
+    <h3 *ngIf="title" class="text-center title">{{title | translate}}</h3>
+    <ng-content></ng-content>
+    <ng-template ngIf="imageModal">
+      <app-image-preview *ngIf="imageModel" [img]="imageModel.src"></app-image-preview>
+    </ng-template>
+    <div class="buttons d-flex justify-content-center mt-3">
+      <app-custom-button class="accept modal-btn" label="buttons.accept" *ngIf="enableAcceptBtn" [centered]="true" (onClick)="onAcceptBtn()"></app-custom-button>
+      <app-custom-button class="cancel modal-btn" label="buttons.cancel" *ngIf="enableCancelBtn" [centered]="true" (onClick)="onRejectBtn()"></app-custom-button>
+    </div>
+  </div>
+</div>

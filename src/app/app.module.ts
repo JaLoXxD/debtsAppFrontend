@@ -12,16 +12,16 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { HttpClientModule } from "@angular/common/http";
 import { HomeViewComponent } from './views/home-view/home-view.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { CustomAlertComponent } from './shared/custom-alert/custom-alert.component';
+import { CustomAlertComponent } from './shared/components/custom-alert/custom-alert.component';
 import { RecoverPasswordViewComponent } from './views/recover-password-view/recover-password-view.component';
 import { RecoverPasswordFormComponent } from './components/recover-password-form/recover-password-form.component';
-import { AuthContainerComponent } from './shared/auth-container/auth-container.component';
-import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { AuthContainerComponent } from './shared/components/auth-container/auth-container.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { CreateDebtViewComponent } from './views/create-debt-view/create-debt-view.component';
-import { CustomInputComponent } from './shared/custom-input/custom-input.component';
-import { CustomButtonComponent } from './shared/custom-button/custom-button.component';
+import { CustomInputComponent } from './shared/components/custom-input/custom-input.component';
+import { CustomButtonComponent } from './shared/components/custom-button/custom-button.component';
 import { ProvideParentFormDirective } from './shared/directives/provide-parent-form.directive';
 import { HttpErrorInterceptor } from "./services/error/http-error.interceptor.service";
 import { BaseComponent } from "./shared/base/base.component";
@@ -32,6 +32,33 @@ import { RegisterViewComponent } from './views/register-view/register-view.compo
 import { LangSelectorComponent } from './components/lang-selector/lang-selector.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { AuthInterceptor } from './services/auth/auth.interceptor.service';
+import { CreateDebtFormComponent } from './components/create-debt-form/create-debt-form.component';
+import { CustomDropdownComponent } from './shared/components/custom-dropdown/custom-dropdown.component';
+import { NgxMatSelectSearchModule } from "ngx-mat-select-search";
+import { MatSelectModule } from "@angular/material/select";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { CustomDatePickerComponent } from './shared/components/custom-date-picker/custom-date-picker.component';
+import { DebtsViewComponent } from './views/debts-view/debts-view.component';
+import { CustomTableComponent } from './shared/components/custom-table/custom-table.component';
+import { DebtsListComponent } from './components/debts-list/debts-list.component';
+import { CustomPaginatorIntl } from "./shared/components/custom-table/custom-paginator-int";
+import { CurrencyPipe, DatePipe } from "@angular/common";
+import { CustomModalComponent } from './shared/components/custom-modal/custom-modal.component';
+import { CloseModalDirective } from './shared/directives/close-modal.directive';
+import { DebtsPaymentsViewComponent } from './views/debts-payments-view/debts-payments-view.component';
+import { PaymentsListComponent } from './components/payments-list/payments-list.component';
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { EditPaymentViewComponent } from './views/edit-payment-view/edit-payment-view.component';
+import { EditPaymentFormComponent } from './components/edit-payment-form/edit-payment-form.component';
+import { CustomFileUploaderComponent } from './shared/components/custom-file-uploader/custom-file-uploader.component';
+import { CustomTitleComponent } from './shared/components/custom-title/custom-title.component';
+import { ImagePreviewComponent } from './shared/components/image-preview/image-preview.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -58,7 +85,22 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterFormComponent,
     RegisterViewComponent,
     LangSelectorComponent,
-    DropdownDirective
+    DropdownDirective,
+    CreateDebtFormComponent,
+    CustomDropdownComponent,
+    CustomDatePickerComponent,
+    DebtsViewComponent,
+    CustomTableComponent,
+    DebtsListComponent,
+    CustomModalComponent,
+    CloseModalDirective,
+    DebtsPaymentsViewComponent,
+    PaymentsListComponent,
+    EditPaymentViewComponent,
+    EditPaymentFormComponent,
+    CustomFileUploaderComponent,
+    CustomTitleComponent,
+    ImagePreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +108,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatNativeDateModule,
+    NgxMatSelectSearchModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -76,6 +129,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
+    CurrencyPipe,
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
@@ -85,7 +140,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-    }
+    },
+    { 
+      provide: MatPaginatorIntl, 
+      useClass: CustomPaginatorIntl 
+    },
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,9 @@
+@import "src/app/utils/variables.scss";
+
+body {
+  background-color: $backgroundColor !important;
+}
+
 .container {
   width: 100vw;
   height: 100vh;

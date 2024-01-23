@@ -1,45 +1,43 @@
 <app-auth-container [bigContainer]="true">
-  <button class="back-btn" (click)="back()">
-    <i class="fa-solid fa-arrow-left"></i>
-  </button>
-  <form (ngSubmit)="createUser()" #f="ngForm">
+  <app-custom-button btnType="back" class="back" (onClick)="back()"></app-custom-button>
+  <form (ngSubmit)="createUser()" #f="ngForm" class="auth-form">
     <h2>{{"register.title" | translate}}</h2>
     <div class="inputs w-100 m-auto mb-5">
       <div class="row">
-        <div class="sm-col-12 col-md-6 test">
-          <app-custom-input label="userInfo.firstName" type="text" [data]="registerModel" id="firstName" [form]="f" [required]="true"></app-custom-input>
+        <div class="sm-col-12 col-md-6">
+          <app-custom-input label="userInfo.firstName" [dynamicLabel]="true" type="text" [data]="registerModel" id="firstName" [form]="f" [required]="true"></app-custom-input>
         </div>
         <div class="sm-col-12 col-md-6">
-          <app-custom-input label="userInfo.secondName" type="text" [data]="registerModel" id="secondName" [form]="f"></app-custom-input>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <div class="sm-col-12 col-md-6">
-          <app-custom-input label="userInfo.lastName" type="text" [data]="registerModel" id="lastName" [form]="f" [required]="true"></app-custom-input>
-        </div>
-        <div class="sm-col-12 col-md-6">
-          <app-custom-input label="userInfo.secondLastName" type="text" [data]="registerModel" id="secondLastName" [form]="f" ></app-custom-input>
+          <app-custom-input label="userInfo.secondName" [dynamicLabel]="true" type="text" [data]="registerModel" id="secondName" [form]="f"></app-custom-input>
         </div>
       </div>
       <div class="row mt-4">
         <div class="sm-col-12 col-md-6">
-          <app-custom-input label="userInfo.phone" type="text" [data]="registerModel" id="phone" [form]="f" [required]="true"></app-custom-input>
+          <app-custom-input label="userInfo.lastName" [dynamicLabel]="true" type="text" [data]="registerModel" id="lastName" [form]="f" [required]="true"></app-custom-input>
         </div>
         <div class="sm-col-12 col-md-6">
-          <app-custom-input label="userInfo.salary" type="text" [data]="registerModel" id="salary" [form]="f" [required]="true"></app-custom-input>
-        </div>
-      </div>
-      <div class="row mt-4">
-        <div class="sm-col-12 col-md-6">
-          <app-custom-input label="userInfo.email" type="text" [data]="registerModel" id="email" [form]="f" [required]="true"></app-custom-input>
-        </div>
-        <div class="sm-col-12 col-md-6">
-          <app-custom-input label="userInfo.username" type="text" [data]="registerModel" id="username" [form]="f" [required]="true"></app-custom-input>
+          <app-custom-input label="userInfo.secondLastName" [dynamicLabel]="true" type="text" [data]="registerModel" id="secondLastName" [form]="f" ></app-custom-input>
         </div>
       </div>
       <div class="row mt-4">
         <div class="sm-col-12 col-md-6">
-          <app-custom-input label="userInfo.password" type="password" [data]="registerModel" id="password" [form]="f" [required]="true"></app-custom-input>
+          <app-custom-input label="userInfo.phone" [dynamicLabel]="true" type="text" [data]="registerModel" id="phone" [form]="f" [required]="true"></app-custom-input>
+        </div>
+        <div class="sm-col-12 col-md-6">
+          <app-custom-input label="userInfo.salary" [dynamicLabel]="true" type="text" [data]="registerModel" id="salary" [form]="f" [required]="true"></app-custom-input>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="sm-col-12 col-md-6">
+          <app-custom-input label="userInfo.email" [dynamicLabel]="true" type="text" [data]="registerModel" id="email" [form]="f" [required]="true"></app-custom-input>
+        </div>
+        <div class="sm-col-12 col-md-6">
+          <app-custom-input label="userInfo.username" [dynamicLabel]="true" type="text" [data]="registerModel" id="username" [form]="f" [required]="true"></app-custom-input>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="sm-col-12 col-md-6">
+          <app-custom-input label="userInfo.password" [dynamicLabel]="true" type="password" [data]="registerModel" id="password" [form]="f" [required]="true"></app-custom-input>
         </div>
       </div>
     </div>

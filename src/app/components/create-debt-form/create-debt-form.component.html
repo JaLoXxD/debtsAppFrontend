@@ -1,0 +1,40 @@
+<form #f="ngForm" (ngSubmit)="submitForm()" class="custom-form">
+  <div class="row">
+    <div class="sm-col-12 col-md-6 test">
+      <app-custom-input label="debtInfo.name" type="text" [data]="createDebtModel" id="name" [form]="f" [required]="true"></app-custom-input>
+    </div>
+    <div class="sm-col-12 col-md-6">
+      <app-custom-input label="debtInfo.description" type="text" [data]="createDebtModel" id="description" [form]="f"></app-custom-input>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="sm-col-12 col-md-6 test">
+      <app-custom-dropdown label="debtInfo.category" type="text" [data]="createDebtModel" id="category" [form]="f" [required]="true" [options]="debtCategoriesOptions"></app-custom-dropdown>
+    </div>
+    <div class="sm-col-12 col-md-6">
+      <app-custom-dropdown label="debtInfo.priority" type="text" [data]="createDebtModel" id="priority" [form]="f" [required]="true" [options]="debtPrioritiesOptions"></app-custom-dropdown>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="sm-col-12 col-md-6 test">
+      <app-custom-input label="debtInfo.collector" type="text" [data]="createDebtModel" id="collector" [form]="f" [required]="true"></app-custom-input>
+    </div>
+    <div class="sm-col-12 col-md-6">
+      <app-custom-input label="debtInfo.amount" type="currency" [data]="createDebtModel" id="amount" [form]="f" [required]="true"></app-custom-input>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="sm-col-12 col-md-6 test">
+      <app-custom-input label="debtInfo.termInMonths" type="number" [data]="createDebtModel" id="termInMonths" [form]="f" [required]="true" (blurEmmiter)="updateEndDate($event)"></app-custom-input>
+    </div>
+    <div class="sm-col-12 col-md-6">
+      <app-custom-date-picker label="debtInfo.startDate" [data]="createDebtModel" id="startDate" [form]="f" [required]="true" (dateChangeEmmiter)="updateEndDate($event)"></app-custom-date-picker>
+    </div>
+  </div>
+  <div class="row mt-4 mb-4">
+    <div class="sm-col-12 col-md-6 test">
+      <app-custom-date-picker label="debtInfo.endDate" [data]="createDebtModel" id="endDate" [form]="f" [disabled]="true" [required]="true"></app-custom-date-picker>
+    </div>
+  </div>
+  <app-custom-button type="submit" [isLoading]="isLoading" label="buttons.save" [centered]="true" [disabled]="f.invalid"></app-custom-button>
+</form>

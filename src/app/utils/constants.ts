@@ -2,16 +2,16 @@ export const constants = {
   DEFAULT_LANG: "es",
   LANG_OPTIONS: [
     {
-        LANG: "es",
-        ICON: "assets/img/lang/es.png",
-        LABEL: "lang.es",
-        PREFIX: "es-ES"
+      LANG: "es",
+      ICON: "assets/img/lang/es.png",
+      LABEL: "lang.es",
+      PREFIX: "es-ES"
     },
     {
-        LANG: "en",
-        ICON: "assets/img/lang/en.png",
-        LABEL: "lang.en",
-        PREFIX: "en-US"
+      LANG: "en",
+      ICON: "assets/img/lang/en.png",
+      LABEL: "lang.en",
+      PREFIX: "en-US"
     }
   ],
   ALERTS: {
@@ -37,5 +37,21 @@ export const constants = {
         color: "#17a2b8"
       }
     },
-  }
+  },
+  MODAL: {
+    ICONS: {
+      SUCCESS: {
+        src: 'assets/img/modal/success.png',
+        alt: 'success icon',
+      },
+      ERROR: {
+        src: 'assets/img/modal/error.png',
+        alt: 'error icon'
+      },
+      WARNING: {
+        src: 'assets/img/modal/warning.png',
+        alt: 'warning icon'
+      },
+    }
+  },
 };

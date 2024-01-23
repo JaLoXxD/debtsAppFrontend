@@ -1,0 +1,16 @@
+<div class="custom-input custom-select" [ngClass]="{'invalid': isInvalidInput(), 'without-icon': !icon, 'with-static-label': !dynamicLabel}">
+  <span class="static-label" *ngIf="!dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></span>
+  <mat-select [(ngModel)]="data[id]" [name]="id" [id]="id" provide-parent-form #idModel="ngModel" [required]="required" [ngClass]="{'with-content': data[id]}" [placeholder]="'general.chooseAnOption' | translate">
+    <mat-option>
+      <ngx-mat-select-search [formControl]="optionFilter" [placeholderLabel]="'general.search' | translate" [noEntriesFoundLabel]="'general.noEntriesFound' | translate"></ngx-mat-select-search>
+    </mat-option>
+    <mat-option *ngFor="let option of filteredOptions" [value]="option.value">{{option.label}}</mat-option>
+  </mat-select>
+  <!-- <select  class="form-select">
+    <option value="" *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
+  </select>
+  <i class="fa-solid fa-angle-down"></i> -->
+  <i *ngIf="icon" [class]="icon"></i>
+  <i class="label" *ngIf="dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></i>
+</div>
+<span *ngIf="form.invalid && isInvalidInput()" class="required-error">{{ "errors.required" | translate }}</span>

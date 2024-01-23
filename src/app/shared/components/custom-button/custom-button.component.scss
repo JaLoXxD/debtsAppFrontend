@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  width: 100%;
+  cursor: default !important;
+}
+
+.disabled-btn {
+  cursor: not-allowed;
+}
