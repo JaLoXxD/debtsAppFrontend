@@ -38,11 +38,13 @@
     "confirmDelete": "Are you sure you want to delete the selected record?",
     "noData": "Not results found",
     "chooseImage": "Choose an image",
-    "confirmDebtCreation": "A debt of {{months}} months will be created with monthly fees of: ${{monthlyFee}}, are you sure you want to continue?"
+    "confirmDebtCreation": "A debt of {{months}} months will be created with monthly fees of: ${{monthlyFee}}, are you sure you want to continue?",
+    "confirmDebtPaymentsUpdate": "Are you sure you want to make the payment for {{amount}}? This will modify the value of the monthly debt payments."
   },
   "errors": {
     "required": "This field is required",
     "server": "An error occurred on the server, please try again later",
+    "maxAmount": "The value must be less than{{max}}",
     "client": "An error occurred, please try again later"
   },
   "userInfo": {
@@ -68,7 +70,8 @@
     "endDate": "End date",
     "collector": "Collector",
     "amount": "Amount",
-    "termInMonths": "Term in months"
+    "termInMonths": "Term in months",
+    "payed": "Payed"
   },
   "debtPayment": {
     "id": "ID",

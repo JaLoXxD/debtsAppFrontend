@@ -1,4 +1,4 @@
-<form #f="ngForm" (ngSubmit)="submitForm()" class="custom-form">
+<form #f="ngForm" (ngSubmit)="submitForm()" class="custom-form" *ngIf="editDebtPaymentModel">
   <div class="row">
     <div class="sm-col-12 col-md-6">
       <app-custom-input label="debtPayment.name" type="text" [data]="editDebtPaymentModel" id="name" [form]="f" [required]="true"></app-custom-input>
@@ -12,12 +12,12 @@
       <app-custom-date-picker label="debtPayment.paymentDate" [data]="editDebtPaymentModel" id="paymentDate" [form]="f" [required]="true"></app-custom-date-picker>
     </div>
     <div class="sm-col-12 col-md-6">
-      <app-custom-input label="debtPayment.amount" type="currency" [data]="editDebtPaymentModel" id="amount" [form]="f" [required]="true"></app-custom-input>
+      <app-custom-input label="debtPayment.amount" type="currency" [maxAmount]="maxAmount" [data]="editDebtPaymentModel" id="amount" [form]="f" [disabled]="editDebtPaymentModel.payed" [required]="true"></app-custom-input>
     </div>
   </div>
   <div class="row mt-4 mb-4">
     <div class="sm-col-12 col-md-6">
-      <app-custom-file-uploader [data]="editDebtPaymentModel" id="image" [form]="f" (changeImg)="onFileSelected($event)" (showImagePreview)="showImagePreviewModal($event)"></app-custom-file-uploader>
+      <app-custom-file-uploader [data]="editDebtPaymentModel" id="image" [customImgLabel]="editDebtPaymentModel.image?.name" [form]="f" (changeImg)="onFileSelected($event)" (showImagePreview)="showImagePreviewModal($event)"></app-custom-file-uploader>
     </div>
   </div>
   <app-custom-button type="submit" [isLoading]="isLoading" label="buttons.save" [centered]="true" [disabled]="f.invalid"></app-custom-button>

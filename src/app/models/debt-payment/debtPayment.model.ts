@@ -8,9 +8,10 @@ export interface DebtPaymentModel {
   maxPaymentDate: Date;
   createdAt: Date;
   amount: number;
+  expectedAmount: number;
   balanceAfterPay: number;
   balanceBeforePay: number;
-  image: File | null;
+  image: string;
   payed: boolean;
   debt: DebtModel;
 }

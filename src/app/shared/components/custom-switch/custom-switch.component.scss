@@ -1,0 +1,41 @@
+@import 'variables';
+@import 'mixins';
+
+:host ::ng-deep {
+  .mdc-form-field {
+    .mdc-switch {
+      width: 60px;
+      height: 35px;
+      .mdc-switch__track {
+        height: 35px;
+        border-radius: 50px;
+        &::before {
+          background: $lightGray;
+        }
+      }
+      .mdc-switch__focus-ring-wrapper, .mdc-switch__handle {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+      }
+      .mdc-switch__handle-track {
+        width: calc(100% - 35px);
+      }
+      .mdc-switch__shadow {
+        background-color: $success;
+      }
+      &:enabled {
+        .mdc-switch__track {
+          &::after {
+            background: $successHover !important;
+          }
+        }
+      }
+    }
+  }
+  .mat-mdc-slide-toggle {
+    .mdc-label {
+      @include staticLabel;
+    }
+  }
+}

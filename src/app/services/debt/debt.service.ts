@@ -1,8 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
-import { AllDebtsModel, CreateDebtModel, CreateDebtResponseModel, DebtDetailResponseModel, DebtModel, DebtPaymentsResponseModel, EditDebtPaymentModel, GenericResponseModel } from "src/app/models";
-import { DebtPaymentModel } from "src/app/models/debt-payment/debtPayment.model";
+import { AllDebtsModel, CreateDebtModel, CreateDebtResponseModel, DebtDetailResponseModel, DebtModel, DebtPaymentModel, DebtPaymentsResponseModel, EditDebtPaymentModel, GenericResponseModel, SingleDebtModel } from "src/app/models";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -18,6 +17,10 @@ export class DebtService {
   getAllDebts(page: number, size: number, filterValue: string | null):Observable<AllDebtsModel>{
     const filterCondition = filterValue ? `&filter=${filterValue}` : '';
     return this._http.get<AllDebtsModel>(`${environment.apiURL}/debt/all?page=${page}&size=${size}${filterCondition}`);
+  }
+
+  getDebtById(debtId: number): Observable<SingleDebtModel>{
+    return this._http.get<SingleDebtModel>(`${environment.apiURL}/debt/${debtId}`);
   }
 
   updateDebt(createDebtBody: CreateDebtModel):Observable<CreateDebtResponseModel> {

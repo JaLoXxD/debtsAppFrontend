@@ -1,4 +1,4 @@
-@import "src/app/utils/variables.scss";
+@import "src/app/utils/styles/variables.scss";
 
 :host {
   display: block;
@@ -6,7 +6,7 @@
 
 .without-icon {
   ::ng-deep .mat-mdc-select-trigger {
-    padding: 15px 15px 7.5px !important;
+    padding: 15px !important;
     cursor: pointer;
     & option {
       outline: 2px solid $lightBlue;

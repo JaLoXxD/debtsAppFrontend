@@ -17,7 +17,6 @@ export class DebtsListComponent extends BaseComponent {
   tableData: TableDataModel;
   tableButtons: TableButtonModel[] = [];
   currentPage: number = 1;
-  appConstants: typeof constants = constants;
 
   private _onAcceptSubscription: Subscription;
   private _selectedDebt: DebtDtoModel | null = null;
@@ -30,6 +29,7 @@ export class DebtsListComponent extends BaseComponent {
   ngOnInit(): void {
     this._getAllDebts();
     this._buildSubscriptions();
+    this._initColumns();
   }
 
   ngOnDestroy(): void {

@@ -33,7 +33,7 @@ export class PaymentsListComponent extends BaseComponent {
       { label: 'name', type: 'string' },
       { label: 'description', type: 'string' },
       { label: 'payed', type: 'checkbox', disabled: true },
-      { label: 'paymentDate', type: 'string' },
+      { label: 'paymentDate', type: 'date' },
       { label: 'maxPaymentDate', type: 'date' },
       { label: 'balanceBeforePay', type: 'currency' },
       { label: 'balanceAfterPay', type: 'currency' },

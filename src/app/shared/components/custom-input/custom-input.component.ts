@@ -16,6 +16,8 @@ export class CustomInputComponent {
   @Input() required: boolean = false;
   @Input() dynamicLabel: boolean = false;
   @Input() form!: NgForm;
+  @Input() maxAmount: number | null = null;
+  @Input() disabled: boolean = false;
 
   @Output() blurEmmiter: EventEmitter<any> = new EventEmitter();
 
@@ -24,6 +26,9 @@ export class CustomInputComponent {
 
   ngOnInit(): void {
     this.isPassword = this.type === 'password';
+    if(this.type === 'currency' && !this.maxAmount) {
+      this.maxAmount = this.data[this.id];
+    }
   }
 
   isInvalidInput(): boolean {

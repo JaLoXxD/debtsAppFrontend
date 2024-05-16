@@ -1,4 +1,4 @@
-@import "src/app/utils/variables.scss";
+@import "src/app/utils/styles/variables.scss";
 
 .filter-container {
   width: 300px;
@@ -39,8 +39,8 @@
 
 .table-container {
   overflow: hidden;
-  border-radius: 15px;
-  .mat-mdc-table .mat-mdc-header-cell {
+  background-color: $white;
+  .mat-mdc-table .mat-mdc-header-cell, .mat-mdc-header-row {
     background-color: $darkBlue;
     color: $white;
   }

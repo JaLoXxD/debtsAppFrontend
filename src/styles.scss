@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import "src/app/utils/variables.scss";
+@import "src/app/utils/styles/variables.scss";
+@import "src/app/utils/styles/mixins.scss";
+@import "src/app/utils/styles/auth.scss";
+@import "src/app/utils/styles/debt.scss";
 
 body {
   font-family: "Roboto", sans-serif;
@@ -63,6 +66,13 @@ app-custom-button.back{
       -webkit-box-shadow: 0 0 0 1000px $lightGray inset !important;
       background-color: white !important;
       -webkit-text-fill-color: $white !important;
+    }
+
+    &:disabled {
+      background-color: $disabledBackground;
+      border-color: $disabledColor;
+      color: $disabledColor;
+      cursor: not-allowed;
     }
   }
   i.label,
@@ -160,10 +170,7 @@ body:not(.auth-background) {
 
 .with-static-label {
   .static-label {
-    color: $white;
-    font-size: 18px;
-    margin-bottom: 5px;
-    display: block;
+    @include staticLabel;
   }
   input {
     padding: 15px !important;

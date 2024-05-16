@@ -1,7 +1,6 @@
 import { DebtCategoryModel } from "../debt-category/debtCategory.model";
 import { DebtPaymentModel } from "../debt-payment/debtPayment.model";
 import { DebtPriorityModel } from "../debt-priority/debtPriority.model";
-import { UserModel } from "../user/userResponse.model";
 
 export interface DebtModel {
   id: number;
@@ -15,5 +14,6 @@ export interface DebtModel {
   amount: number;
   pendingAmount: number;
   termInMonths: number;
+  payed: boolean;
   debtPayments: DebtPaymentModel[];
 }

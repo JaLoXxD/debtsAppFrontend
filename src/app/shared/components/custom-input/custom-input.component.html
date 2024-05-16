@@ -7,14 +7,15 @@
     <button *ngIf="isPassword" type="button" (click)="togglePasswordVisibility()"
             [title]="(isVisiblePassword ? 'general.hidePassword' : 'general.showPassword') | translate"><i
               [ngClass]="{'fa-regular': isVisiblePassword, 'fa-solid': !isVisiblePassword}" class="fa-eye"></i></button>
-    <i class="label" *ngIf="dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></i>
+    <i class="label" *ngIf="dynamicLabel">{{ label | translate }}<span *ngIf="required">*</span></i>
   </ng-container>
   <ng-container *ngIf="type === 'currency'">
-    <span class="static-label" *ngIf="!dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></span>
-    <span class="currency">$</span>
-    <input [ngClass]="{'with-content': data[id]}" class="currency-input" [name]="id" type="number" (keypress)="preventE($event)" [(ngModel)]="data[id]" (blur)="onBlur($event)" provide-parent-form #idModel="ngModel" [required]="required">
+    <span class="static-label" *ngIf="!dynamicLabel">{{ label | translate }}<span *ngIf="required">*</span></span>
+    <span [ngClass]="{'currency': true, 'disabled-currency': disabled}">$</span>
+    <input [ngClass]="{'with-content': data[id]}" class="currency-input" [name]="id" type="number" [max]="maxAmount" (keypress)="preventE($event)" [(ngModel)]="data[id]" (blur)="onBlur($event)" provide-parent-form #idModel="ngModel" [required]="required" [disabled]="disabled">
     <i *ngIf="icon" [class]="icon"></i>
     <i class="label" *ngIf="dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></i>
+    <span *ngIf="data[id] > maxAmount!" class="max-amount-error">{{ 'errors.maxAmount' | translate: { max: maxAmount } }}</span>
   </ng-container>
 </div>
 <span *ngIf="form.invalid && isInvalidInput()" class="required-error">{{ "errors.required" | translate }}</span>

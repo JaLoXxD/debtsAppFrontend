@@ -24,7 +24,6 @@ export class CustomTableComponent {
   @Output() onFilter = new EventEmitter();
   displayedColumns: string[] = [];
   dataColumns: string[] = [];
-  fixedColumn: string[] = [];
   dataSource = new MatTableDataSource([]);
   staticTypes: any[] = ['string', 'number', 'date', 'currency'];
   filterValue: string;
@@ -41,18 +40,16 @@ export class CustomTableComponent {
   ngOnChanges(): void {
     if(this.paginator && this.paginator.length !== this.data.totalElements) {
       this.paginator.length = this.data.totalElements;
-
     }
+    this.displayedColumns = this.data.columns?.filter(column => !column.static).map((column) => column.label);
+    if(this.buttons.length > 0) {
+      this.displayedColumns = [
+        ...this.displayedColumns,
+        'actions'
+      ];
+    }
+    this.dataColumns = this.displayedColumns.filter((column) => column !== 'actions');
     if(this.data.items.length > 0) {
-      this.displayedColumns = this.data.columns.filter(column => !column.static).map((column) => column.label);
-      this.fixedColumn = this.data.columns.filter(column => column.static).map((column) => column.label);
-      if(this.buttons.length > 0) {
-        this.displayedColumns = [
-          ...this.displayedColumns,
-          'actions'
-        ];
-      }
-      this.dataColumns = this.displayedColumns.filter((column) => column !== 'actions');
       this.dataSource = new MatTableDataSource(this.data.items);
       this.dataSource.sort = this.sort;
       if(this._pageSubscriber){
@@ -128,6 +125,6 @@ export class CustomTableComponent {
   }
 
   ngOnDestroy(): void {
-    this._pageSubscriber.unsubscribe();
+    this._pageSubscriber?.unsubscribe();
   }
 }

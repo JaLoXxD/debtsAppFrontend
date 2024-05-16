@@ -1,5 +1,5 @@
 <div [ngClass]="{'hide': !showModal, 'show': showModal}" appCloseModal class="modal-container" (toggleModal)="toggleModal($event)">
-  <div class="modal">
+  <div class="modal" [ngClass]="{'image-modal': imageModal}">
     <img *ngIf="icon" [src]="icon.src" [alt]="icon.alt" class="icon">
     <h3 *ngIf="title" class="text-center title">{{title | translate}}</h3>
     <ng-content></ng-content>

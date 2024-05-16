@@ -21,7 +21,6 @@ export class CreateDebtFormComponent extends BaseComponent{
   createDebtModel: CreateDebtModel;
   debtCategoriesOptions: DropdownOptionModel[] = [];
   debtPrioritiesOptions: DropdownOptionModel[] = [];
-  appConstants: typeof constants = constants;
 
   private _onAcceptSubscription: Subscription;
 
@@ -63,6 +62,7 @@ export class CreateDebtFormComponent extends BaseComponent{
       collector: this._debtService.currentDebt.collector,
       amount: this._debtService.currentDebt.amount,
       termInMonths: this._debtService.currentDebt.termInMonths,
+      calcWithAmount: false,
     }
     this._debtService.currentDebt = null;
     this._debtService.isEdit = false;
@@ -74,7 +74,7 @@ export class CreateDebtFormComponent extends BaseComponent{
         console.log(resp);
         resp.allDebtCategories.forEach((category) => {
           this.debtCategoriesOptions.push({
-            label: category.name,
+            label: category.description,
             value: category.id
           });
         });
@@ -89,7 +89,7 @@ export class CreateDebtFormComponent extends BaseComponent{
         console.log(resp);
         resp.allDebtPriorities.forEach((priority) => {
           this.debtPrioritiesOptions.push({
-            label: priority.name,
+            label: priority.description,
             value: priority.id
           });
         });
@@ -162,6 +162,7 @@ export class CreateDebtFormComponent extends BaseComponent{
       collector: '',
       amount: null,
       termInMonths: null,
+      calcWithAmount: false,
     }
   }
 }

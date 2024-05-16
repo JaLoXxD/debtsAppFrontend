@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { NgForm, NgModel } from "@angular/forms";
 
 @Component({
@@ -6,7 +6,7 @@ import { NgForm, NgModel } from "@angular/forms";
   templateUrl: './custom-file-uploader.component.html',
   styleUrls: ['./custom-file-uploader.component.scss']
 })
-export class CustomFileUploaderComponent {
+export class CustomFileUploaderComponent implements OnChanges {
   @ViewChild('idModel') inputModel!: NgModel;
   @Input() icon: string = 'fa-solid fa-camera-retro';
   @Input() label: string = "";
@@ -15,12 +15,23 @@ export class CustomFileUploaderComponent {
   @Input() required: boolean = false;
   @Input() dynamicLabel: boolean = false;
   @Input() form!: NgForm;
+  @Input() customImgLabel: string | undefined = '';
 
   @Output() changeImg = new EventEmitter<boolean>();
   @Output() showImagePreview = new EventEmitter<boolean>();
 
   imgLabel:string = 'messages.chooseImage';
   showRemoveBtn:boolean = false;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.data);
+    console.log(this.data[this.id]);
+    if (this.data[this.id]) {
+      console.log(this.data[this.id].name);
+      this.imgLabel = this.data[this.id].name;
+      this.showRemoveBtn = true;
+    }
+  }
 
   inputImage(event: Event) {
     const target = event.target as HTMLInputElement;

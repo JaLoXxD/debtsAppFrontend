@@ -43,6 +43,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CustomDatePickerComponent } from './shared/components/custom-date-picker/custom-date-picker.component';
 import { DebtsViewComponent } from './views/debts-view/debts-view.component';
 import { CustomTableComponent } from './shared/components/custom-table/custom-table.component';
@@ -59,6 +60,8 @@ import { EditPaymentFormComponent } from './components/edit-payment-form/edit-pa
 import { CustomFileUploaderComponent } from './shared/components/custom-file-uploader/custom-file-uploader.component';
 import { CustomTitleComponent } from './shared/components/custom-title/custom-title.component';
 import { ImagePreviewComponent } from './shared/components/image-preview/image-preview.component';
+import { DebtInfoHeaderComponent } from './components/debt-info-header/debt-info-header.component';
+import { CustomSwitchComponent } from './shared/components/custom-switch/custom-switch.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -100,7 +103,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditPaymentFormComponent,
     CustomFileUploaderComponent,
     CustomTitleComponent,
-    ImagePreviewComponent
+    ImagePreviewComponent,
+    DebtInfoHeaderComponent,
+    CustomSwitchComponent
   ],
   imports: [
     BrowserModule,
@@ -119,6 +124,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDatepickerModule,
     MatCheckboxModule,
     MatNativeDateModule,
+    MatSlideToggleModule,
     NgxMatSelectSearchModule,
     TranslateModule.forRoot({
       loader: {

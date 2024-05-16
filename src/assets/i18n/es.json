@@ -38,11 +38,13 @@
     "confirmDelete": "¿Estás seguro que deseas eliminar el registro seleccionado?",
     "noData": "No hay datos para mostrar",
     "chooseImage": "Seleccione una imagen",
-    "confirmDebtCreation": "Se creará una deuda de {{months}} meses con cuotas mensuales de: ${{monthlyFee}}, ¿está seguro que desea continuar?"
+    "confirmDebtCreation": "Se creará una deuda de {{months}} meses con cuotas mensuales de: ${{monthlyFee}}, ¿Está seguro que desea continuar?",
+    "confirmDebtPaymentsUpdate": "¿Estás seguro de hacer el pago por {{amount}}? Esto modificará el valor de las cuotas mensuales de la deuda"
   },
   "errors": {
     "required": "Este campo es obligatorio",
     "server": "Ocurrió un error en el servidor, por favor intente más tarde",
+    "maxAmount": "El valor debe ser menor a {{max}}",
     "client": "Ocurrió un error, por favor intente más tarde"
   },
   "userInfo": {
@@ -68,7 +70,8 @@
     "endDate": "Fecha de fin",
     "collector": "Cobrador",
     "amount": "Monto",
-    "termInMonths": "Plazo en meses"
+    "termInMonths": "Plazo en meses",
+    "payed": "Pagado"
   },
   "debtPayment": {
     "id": "ID",

@@ -1,4 +1,4 @@
-@import "src/app/utils/variables.scss";
+@import "src/app/utils/styles/variables.scss";
 
 $animation-duration: 0.5s;
 .modal-container {
@@ -13,6 +13,7 @@ $animation-duration: 0.5s;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   user-select: none;
+  z-index: 1000;
   .modal {
     position: relative;
     display: flex;
@@ -26,8 +27,14 @@ $animation-duration: 0.5s;
     border-radius: 25px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     animation: showImage $animation-duration ease-in-out;
+    &.image-modal {
+      height: auto;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
     .title {
       font-size: 25px;
+      font-weight: 500;
     }
     img.icon {
       width: 75px;
