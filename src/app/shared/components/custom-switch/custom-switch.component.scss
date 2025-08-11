@@ -39,3 +39,36 @@
     }
   }
 }
+
+.custom-switch {
+  display: flex;
+  &.vertical-orientation {
+    flex-direction: column;
+  }
+  &.horizontal-orientation {
+    flex-direction: row;
+  }
+  span {
+    @include staticLabel;
+  }
+  p-inputSwitch {
+    height: 48px;
+    display: flex;
+    ::ng-deep.p-inputswitch {
+      margin: auto 0;
+      &.p-inputswitch-checked {
+        .p-inputswitch-slider {
+          background-color: $success;
+          border-color: $success;
+        }
+      }
+      &.p-focus {
+        .p-inputswitch-slider {
+          outline: 0 none;
+          outline-offset: 0;
+          box-shadow: 0 0 0 0.2rem $grayFocus;
+        }
+      }
+    }
+  }
+}

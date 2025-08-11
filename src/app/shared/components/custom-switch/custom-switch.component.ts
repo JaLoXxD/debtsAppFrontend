@@ -12,5 +12,9 @@ export class CustomSwitchComponent {
   @Input() disabled: boolean = false;
   @Input() required: boolean = false;
   @Input() form: any;
-  
+  @Input() orientation: 'horizontal' | 'vertical' = 'vertical';
+
+  formatLabel(value: string): string {
+    return this.required ? `${value}*` : value;
+  }
 }

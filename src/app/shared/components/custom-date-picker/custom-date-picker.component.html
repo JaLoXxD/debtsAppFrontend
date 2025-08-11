@@ -1,7 +1,16 @@
 <div class="custom-input" [ngClass]="{'invalid': isInvalidInput(), 'without-icon': !icon, 'with-static-label': !dynamicLabel, 'disabled': disabled}">
   <span class="static-label" *ngIf="!dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></span>
-  <input [(ngModel)]="data[id]" [ngClass]="{'with-content': data[id]}" [disabled]="disabled" [name]="id" (dateChange)="onDateChange($event)" provide-parent-form #idModel="ngModel" [required]="required" matInput [matDatepicker]="picker">
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-  <i class="label" *ngIf="dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></i>
-</div>
+  <p-calendar 
+    [name]="id"
+    #idModel="ngModel"
+    [(ngModel)]="data[id]" 
+    [readonlyInput]="true" 
+    [minDate]="minDate" 
+    [maxDate]="maxDate" 
+    [showIcon]="true"
+    dateFormat="dd/mm/yy"
+    (onSelect)="onDateChange($event)"
+    provide-parent-form
+  >
+  </p-calendar>
+</div> 

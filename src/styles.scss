@@ -3,6 +3,7 @@
 @import "src/app/utils/styles/mixins.scss";
 @import "src/app/utils/styles/auth.scss";
 @import "src/app/utils/styles/debt.scss";
+@import "src/app/utils/styles/table.scss";
 
 body {
   font-family: "Roboto", sans-serif;
@@ -49,6 +50,9 @@ app-custom-button.back{
 .custom-input {
   position: relative;
   width: 100%;
+  input {
+    @include inputLabel;
+  }
   input, .mat-mdc-select-trigger {
     position: relative;
     width: 100%;
@@ -60,7 +64,7 @@ app-custom-button.back{
     color: $gray;
     font-weight: 500;
     font-size: 1em;
-    height: 61px;
+    height: $inputHeight;
     box-sizing: none;
     &:-webkit-autofill {
       -webkit-box-shadow: 0 0 0 1000px $lightGray inset !important;
@@ -100,15 +104,19 @@ app-custom-button.back{
     line-height: 13px;
     font-weight: 900;
   }
-  button {
-    position: absolute;
-    height: 100%;
-    width: 40px;
-    margin: 0;
-    right: 0;
-    color: $gray;
-    border: 0;
-    background-color: transparent;
+  button.p-autocomplete-dropdown,
+  button.p-datepicker-trigger {
+    @include inputButton;
+  }
+  .p-inputnumber {
+    input {
+      padding: $inputPaddingWithLeftIcon;
+    }
+  }
+  &.input-currency {
+    input {
+      padding: $inputPaddingWithCurrency;
+    }
   }
 }
 
@@ -168,16 +176,46 @@ body:not(.auth-background) {
   }
 }
 
+.without-icon {
+  input {
+    padding: 15px 15px 7.5px;
+  }
+  i.label {
+    padding-left: 15px;
+  }
+  input[type="password"] {
+    padding: 15px 40px 7.5px 15px;
+    button {
+      position: absolute;
+      height: 100%;
+      width: 40px;
+      margin: 0;
+      right: 0;
+      color: $lightBlue;
+      border: 0;
+      background-color: transparent;
+    }
+  }
+}
+
 .with-static-label {
   .static-label {
     @include staticLabel;
   }
   input {
-    padding: 15px !important;
+    padding: $inputPadding;
     font-size: 16px;
   }
   input[type=number].currency-input {
     padding: 15px 25px 15px !important;
+  }
+}
+
+.p-inputtext {
+  &:enabled {
+    &:focus {
+      box-shadow: none;
+    }
   }
 }
 
@@ -189,5 +227,6 @@ body:not(.auth-background) {
   font-size: 13px;
   color: $gray;
 }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

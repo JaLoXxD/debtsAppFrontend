@@ -1,6 +1,5 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import { NgForm, NgModel, FormControl } from "@angular/forms";
-import { takeUntil } from "rxjs";
+import { ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
+import { NgForm, NgModel } from "@angular/forms";
 import { DropdownOptionModel } from "src/app/models";
 
 @Component({
@@ -18,20 +17,40 @@ export class CustomDropdownComponent {
   @Input() dynamicLabel: boolean = false;
   @Input() form!: NgForm;
   @Input() options: DropdownOptionModel[];
+  value: any = '';
 
-  optionFilter: FormControl = new FormControl();
   filteredOptions: DropdownOptionModel[] = [];
+
+  constructor(private _cdr: ChangeDetectorRef) {}
   
   ngOnInit(): void {
     this.filteredOptions = this.options;
-    this.optionFilter.valueChanges
-      .subscribe(() => {
-        this.filteredOptions = this.options.filter(option => option.label.toLowerCase().includes(this.optionFilter.value.toLowerCase()));
-        console.log(this.filteredOptions);
-      });
+    console.log(this.filteredOptions);
+    this._cdr.detectChanges();
+  }
+
+  ngOnChanges(): void {
+    if(this.data[this.id]) {
+        this.setValue();
+    }
+  }
+
+  filterOptions(event: any) {
+    const { query } = event;
+    this.filteredOptions = this.options.filter(option => option.label.toLowerCase().includes(query.toLowerCase()));
+  }
+
+  setValue() {
+    this.value = this.filteredOptions.filter(option => option.value === this.data[this.id])[0].label;
   }
 
   isInvalidInput(): boolean {
     return this.form.submitted && this.inputModel && !this.inputModel.valid;
+  }
+
+  onSelect(event: any) {
+    this.data[this.id] = event.value.value;
+    console.log(this.data);
+    this.setValue();
   }
 }

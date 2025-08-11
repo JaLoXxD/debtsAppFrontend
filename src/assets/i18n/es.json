@@ -71,7 +71,8 @@
     "collector": "Cobrador",
     "amount": "Monto",
     "termInMonths": "Plazo en meses",
-    "payed": "Pagado"
+    "payed": "Pagado",
+    "debtTitle": "Deuda: {{debtName}}"
   },
   "debtPayment": {
     "id": "ID",

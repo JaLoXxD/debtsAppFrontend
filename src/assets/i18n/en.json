@@ -71,7 +71,8 @@
     "collector": "Collector",
     "amount": "Amount",
     "termInMonths": "Term in months",
-    "payed": "Payed"
+    "payed": "Payed",
+    "debtTitle": "Debt: {{debtName}}"
   },
   "debtPayment": {
     "id": "ID",

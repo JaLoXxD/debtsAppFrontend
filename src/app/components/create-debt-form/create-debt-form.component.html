@@ -25,11 +25,6 @@
   </div>
   <div class="row mt-4">
     <div class="sm-col-12 col-md-6 test">
-      <app-custom-switch label="debtInfo.payed" [data]="createDebtModel" id="calcWithAmount" [form]="f"></app-custom-switch>
-    </div>
-  </div>
-  <div class="row mt-4">
-    <div class="sm-col-12 col-md-6 test">
       <app-custom-input label="debtInfo.termInMonths" type="number" [data]="createDebtModel" id="termInMonths" [form]="f" [required]="true" (blurEmmiter)="updateEndDate($event)"></app-custom-input>
     </div>
     <div class="sm-col-12 col-md-6">
@@ -37,8 +32,11 @@
     </div>
   </div>
   <div class="row mt-4 mb-4">
-    <div class="sm-col-12 col-md-6 test">
+    <div class="sm-col-12 col-md-6">
       <app-custom-date-picker label="debtInfo.endDate" [data]="createDebtModel" id="endDate" [form]="f" [disabled]="true" [required]="true"></app-custom-date-picker>
+    </div>
+    <div class="sm-col-12 col-md-6">
+      <app-custom-switch label="debtInfo.payed" [data]="createDebtModel" id="payed" [form]="f"></app-custom-switch>
     </div>
   </div>
   <app-custom-button type="submit" [isLoading]="isLoading" label="buttons.save" [centered]="true" [disabled]="f.invalid"></app-custom-button>

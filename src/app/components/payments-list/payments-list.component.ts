@@ -23,7 +23,7 @@ export class PaymentsListComponent extends BaseComponent {
   ngOnInit() {
     this.tableData = this.initTableData();
     this.currentDebt = this._debtService.currentDebt;
-    this._getDebtPayments();
+    this._getDebtPayments({ page: 0, pageSize: 10, filterValue: '' });
     this._initColumns();
   }
 
@@ -41,7 +41,6 @@ export class PaymentsListComponent extends BaseComponent {
     ];
     this.tableButtons = [
       { icon: 'fa-solid fa-pen', action: 'edit', color: 'primary', label: 'buttons.edit' },
-      { icon: 'fa-solid fa-x', action: 'delete', color: 'warn', label: 'buttons.delete' },
     ];
   }
 
@@ -50,10 +49,14 @@ export class PaymentsListComponent extends BaseComponent {
     this._router.navigate(['debt/payment', debtPayment.id]);  
   }
 
-  private _getDebtPayments(page: number = 0, size: number = 10, filterValue: string | null = null) {
+  onGetDebtPayments(tablePageModel: TablePageModel) {
+    this._getDebtPayments(tablePageModel);
+  }
+
+  private _getDebtPayments(tablePageModel: TablePageModel) {
     this.isLoading = true;
     const { id } = this.currentDebt!;
-    this._debtService.getDebtPayments(id.toString(), page, size, filterValue).subscribe({
+    this._debtService.getDebtPayments(id.toString(), tablePageModel).subscribe({
       next: (resp) => {
         this.tableData = {
           ...this.tableData,
@@ -77,12 +80,12 @@ export class PaymentsListComponent extends BaseComponent {
     });  
   }
 
-  getCurrentPage(pageInfo: TablePageModel) {
-    this._getDebtPayments(pageInfo.page, pageInfo.pageSize);
-  }
+  // getCurrentPage(pageInfo: TablePageModel) {
+  //   this._getDebtPayments(pageInfo.page, pageInfo.pageSize);
+  // }
 
-  filter(pageInfo: TablePageModel) {
-    const { page, pageSize, filterValue } = pageInfo;
-    this._getDebtPayments(page, pageSize, filterValue);
-  }
+  // filter(pageInfo: TablePageModel) {
+  //   const { page, pageSize, filterValue } = pageInfo;
+  //   this._getDebtPayments(page, pageSize, filterValue);
+  // }
 }

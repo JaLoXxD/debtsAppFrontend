@@ -1,1 +1,1 @@
-<app-custom-table [component]="this" [data]="tableData" [buttons]="tableButtons" parentLabel="debtPayment" (onChangePage)="getCurrentPage($event)" (onFilter)="filter($event)"></app-custom-table>
+<app-custom-table [component]="this" [data]="tableData" [buttons]="tableButtons" parentLabel="debtPayment" (onLazyLoad)="onGetDebtPayments($event)"></app-custom-table>

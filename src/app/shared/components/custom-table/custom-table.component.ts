@@ -4,8 +4,10 @@ import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort, Sort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
+import { TableLazyLoadEvent, TablePageEvent } from "primeng/table";
 import { Subscription } from "rxjs";
 import { TableButtonModel, TableDataModel } from "src/app/models";
+import { TablePageModel } from '../../../models/table/tablePage.model';
 
 @Component({
   selector: 'app-custom-table',
@@ -22,13 +24,15 @@ export class CustomTableComponent {
   @Input() pageSizeOptions: number[] = [10, 25, 50, 100];
   @Output() onChangePage = new EventEmitter();
   @Output() onFilter = new EventEmitter();
+  @Output() onLazyLoad: EventEmitter<TablePageModel> = new EventEmitter();
+  private _pageSubscriber: Subscription;
   displayedColumns: string[] = [];
   dataColumns: string[] = [];
   dataSource = new MatTableDataSource([]);
   staticTypes: any[] = ['string', 'number', 'date', 'currency'];
-  filterValue: string;
+  filterValue: string | null = null;
   isFilter: boolean = false;
-  private _pageSubscriber: Subscription;
+  rowsPerPage: number = 10;
 
   constructor(private _liveAnnouncer: LiveAnnouncer, private _currencyPipe: CurrencyPipe, private _datePipe: DatePipe) {
   }
@@ -43,26 +47,29 @@ export class CustomTableComponent {
     }
     this.displayedColumns = this.data.columns?.filter(column => !column.static).map((column) => column.label);
     if(this.buttons.length > 0) {
+      //FOR DELETE
       this.displayedColumns = [
         ...this.displayedColumns,
         'actions'
       ];
     }
     this.dataColumns = this.displayedColumns.filter((column) => column !== 'actions');
-    if(this.data.items.length > 0) {
-      this.dataSource = new MatTableDataSource(this.data.items);
-      this.dataSource.sort = this.sort;
-      if(this._pageSubscriber){
-        return;
-      }
-      this._pageSubscriber = this.paginator.page.subscribe(()=>{
-        this.onChangePage.emit({
-          pageSize: this.paginator.pageSize,
-          page: this.paginator.pageIndex,
-        });
-      });
-    } else {
-      this.dataSource = new MatTableDataSource([]);
+  }
+
+  lazyLoad(event: TableLazyLoadEvent) {
+    this.rowsPerPage = event.rows ?? 10;
+    this.onLazyLoad.emit(this._getTablePageInfo(event));
+  }
+
+  onChangePageSize(event: TablePageEvent) {
+    this.rowsPerPage = event.rows;
+  }
+
+  private _getTablePageInfo(tableInfo: TableLazyLoadEvent): TablePageModel {
+    return {
+      pageSize: this.rowsPerPage,
+      page: (tableInfo.first && tableInfo.rows) ? tableInfo.first / tableInfo.rows : 0,
+      filterValue: this.filterValue,
     }
   }
 
@@ -101,8 +108,15 @@ export class CustomTableComponent {
       case 'date':
         return this._datePipe.transform(value, 'dd/MM/yyyy HH:mm') || "-";
       default:
-        return value || "-";
+        return (typeof value !== 'number') ? this._truncateString(value || "-") : value || "-";
     }
+  }
+
+  private _truncateString(value: string, maxLength: number = 15): string {
+    if (value.length > maxLength) {
+      return value.substring(0, maxLength) + '...';
+    }
+    return value;
   }
 
   getColumnType(columnName: string){

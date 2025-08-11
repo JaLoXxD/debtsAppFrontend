@@ -1,3 +1,4 @@
-<div class="custom-switch">
-  <mat-slide-toggle [(ngModel)]="data[id]" [name]="id" [disabled]="disabled" provide-parent-form #idModel="ngModel">{{ label | translate }}</mat-slide-toggle>
+<div class="custom-switch" [ngClass]="{'vertical-orientation': orientation === 'vertical', 'horizontal-orientation': orientation === 'horizontal'}">
+  <span>{{ formatLabel(label | translate) }}</span>
+  <p-inputSwitch [(ngModel)]="data[id]" [name]="id" [required]="required" [disabled]="disabled" provide-parent-form #idModel="ngModel"></p-inputSwitch>
 </div>

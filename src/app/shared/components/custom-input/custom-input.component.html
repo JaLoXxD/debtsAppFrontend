@@ -1,4 +1,4 @@
-<div class="custom-input" [ngClass]="{'invalid': isInvalidInput(), 'without-icon': !icon, 'with-static-label': !dynamicLabel}">
+<div class="custom-input" [ngClass]="{'invalid': isInvalidInput(), 'without-icon': !icon, 'with-static-label': !dynamicLabel, 'input-currency': type === 'currency'}">
   <ng-container *ngIf="type !== 'currency'">
     <span class="static-label" *ngIf="!dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></span>
     <input *ngIf="type !== 'number'" [ngClass]="{'with-content': data[id]}" [name]="id" [type]="type" [(ngModel)]="data[id]" (blur)="onBlur($event)" provide-parent-form #idModel="ngModel" [required]="required">
@@ -12,10 +12,26 @@
   <ng-container *ngIf="type === 'currency'">
     <span class="static-label" *ngIf="!dynamicLabel">{{ label | translate }}<span *ngIf="required">*</span></span>
     <span [ngClass]="{'currency': true, 'disabled-currency': disabled}">$</span>
-    <input [ngClass]="{'with-content': data[id]}" class="currency-input" [name]="id" type="number" [max]="maxAmount" (keypress)="preventE($event)" [(ngModel)]="data[id]" (blur)="onBlur($event)" provide-parent-form #idModel="ngModel" [required]="required" [disabled]="disabled">
+    <p-inputNumber 
+      [ngClass]="{'with-content': data[id]}"
+      class="currency-input"
+      [name]="id"
+      [(ngModel)]="data[id]"
+      inputId="minmaxfraction"
+      mode="decimal"
+      [max]="maxAmount"
+      #idModel="ngModel"
+      [required]="required"
+      [disabled]="disabled"
+      (blur)="onBlur($event)"
+      [minFractionDigits]="2"
+      [maxFractionDigits]="2"
+      autocomplete="off"
+      provide-parent-form 
+    /> 
     <i *ngIf="icon" [class]="icon"></i>
     <i class="label" *ngIf="dynamicLabel">{{ label| translate }}<span *ngIf="required">*</span></i>
-    <span *ngIf="data[id] > maxAmount!" class="max-amount-error">{{ 'errors.maxAmount' | translate: { max: maxAmount } }}</span>
+    <span *ngIf="maxAmount && data[id] > maxAmount!" class="max-amount-error">{{ 'errors.maxAmount' | translate: { max: maxAmount } }}</span>
   </ng-container>
 </div>
 <span *ngIf="form.invalid && isInvalidInput()" class="required-error">{{ "errors.required" | translate }}</span>

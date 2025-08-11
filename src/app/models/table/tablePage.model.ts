@@ -1,5 +1,5 @@
 export interface TablePageModel {
   pageSize: number;
   page: number;
-  filterValue?: string;
+  filterValue?: string | null;
 }

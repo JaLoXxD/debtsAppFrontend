@@ -1,7 +1,8 @@
-@mixin h1Title() {
-  font-size: 2.5rem;
+@mixin h1Title($color: $white) {
+  font-size: 40px;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: $color;
 }
 
 @mixin staticLabel {
@@ -9,4 +10,22 @@
   font-size: 18px;
   margin-bottom: 5px;
   display: block;
+}
+
+@mixin inputLabel {
+  color: $white;
+  font-size: 16px;
+  line-height: 24px;
+  color: $gray80;
+}
+
+@mixin inputButton {
+  position: absolute;
+  height: 100%;
+  margin: 0;
+  color: $gray;
+  border: 0;
+  background-color: transparent;
+  width: fit-content;
+  right: 16px;
 }

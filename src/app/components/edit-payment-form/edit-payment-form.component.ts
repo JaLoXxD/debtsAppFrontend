@@ -1,4 +1,4 @@
-import { CurrencyPipe } from "@angular/common";
+import { CurrencyPipe, DatePipe } from "@angular/common";
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -21,12 +21,21 @@ export class EditPaymentFormComponent extends BaseComponent {
   editDebtPaymentModel: EditDebtPaymentModel;
   imageModel: ImageFileModel;
   previewUrl: string | ArrayBuffer;
-  maxAmount: number | null = null;
+  maxAmount: number | undefined = undefined;
 
   private _debtPaymentId: number = 0;
   private _onAcceptSubscription: Subscription;
 
-  constructor(private _debtService: DebtService, private _modalService: ModalService, private _alertService: AlertService, private route: ActivatedRoute, private _router: Router, private _translateService: TranslateService, private _currencyPipe: CurrencyPipe) {
+  constructor(
+    private _debtService: DebtService, 
+    private _modalService: ModalService, 
+    private _alertService: AlertService, 
+    private route: ActivatedRoute, 
+    private _router: Router, 
+    private _translateService: TranslateService, 
+    private _currencyPipe: CurrencyPipe,
+    private _datePipe: DatePipe
+) {
     super();
     this._initModel();
     this.route.paramMap.subscribe(params => {
@@ -133,14 +142,14 @@ export class EditPaymentFormComponent extends BaseComponent {
       debtId: this._debtService.currentDebt?.id || null,
       name: this._debtService.currentDebtPayment?.name || '',
       description: this._debtService.currentDebtPayment?.description || '',
-      paymentDate: this._debtService.currentDebtPayment?.paymentDate || new Date(),
+      paymentDate: this._debtService?.currentDebtPayment?.paymentDate ? new Date(this._debtService?.currentDebtPayment?.paymentDate) : new Date(),
       amount: this._debtService.currentDebtPayment?.expectedAmount || null,
       pendingAmount: this._debtService.currentDebt?.pendingAmount || null,
       image: imageFile,
       payed: this._debtService.currentDebtPayment?.payed || false,
     }
 
-    this.maxAmount = this._debtService.currentDebt?.pendingAmount || null;
+    this.maxAmount = this._debtService.currentDebt?.pendingAmount || undefined;
 
     if(this._debtService.currentDebtPayment?.image) {
       this.createFileFromURL(`${environment.uploadsURL}/${this._debtService.currentDebtPayment?.image}`, this._debtService.currentDebtPayment?.image || '').then((file) => {

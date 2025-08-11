@@ -24,60 +24,19 @@
   }
 }
 
-/* NORMAL STYLES */
 ::ng-deep {
-  .mat-mdc-select-arrow svg {
-    color: $gray !important;
-    width: 35px;
-    height: 35px;
-  }
-
-  .mat-mdc-select-placeholder {
-    color: $gray !important;
-    letter-spacing: 0 !important;
-  }
-
-  div.mat-mdc-select-panel {
-    background-color: $darkBlue !important;
-  }
-
-  .mat-mdc-option .mdc-list-item__primary-text {
-    color: $white !important;
-  }
-
-  .mat-mdc-option{
-    transition: all .2s ease-in-out;
-  }
-
-  .mat-mdc-option.mat-mdc-option-active.mdc-list-item,
-  .mat-mdc-option:hover:not(.mdc-list-item--disabled) {
-    background-color: $lightBlue !important;
-  }
-
-  .mat-select-search-input {
-    background-color: $darkBlueBackground !important;
-    color: $white !important;
-    &::placeholder {
-      color: $white !important;
+  .p-autocomplete {
+    width: 100%;
+    input {
+      padding: $inputPaddingWithRightIcon;
     }
-  }
-
-  mat-select {
-    position: relative;
-  
-    .mat-select-arrow-wrapper {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
+    .p-button-icon-only {
+      width: fit-content;
+      right: 16px;
     }
-  
-    ngx-mat-select-search {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translateY(-50%);
-      width: calc(100% - 24px); // adjust width to match mat-select
+    ul {
+      padding-left: 0;
+      margin-bottom: 0;
     }
   }
 }

@@ -16,7 +16,7 @@ export class CustomInputComponent {
   @Input() required: boolean = false;
   @Input() dynamicLabel: boolean = false;
   @Input() form!: NgForm;
-  @Input() maxAmount: number | null = null;
+  @Input() maxAmount: number | undefined = undefined;
   @Input() disabled: boolean = false;
 
   @Output() blurEmmiter: EventEmitter<any> = new EventEmitter();
@@ -36,7 +36,17 @@ export class CustomInputComponent {
   }
 
   onBlur(event: any) {
+    if (this.type === 'currency') {
+      this.formatCurrency();
+    }
     this.blurEmmiter.emit(event);
+  }
+
+  formatCurrency(): void {
+    const value = parseFloat(this.data[this.id]);
+    if (!isNaN(value)) {
+      this.data[this.id] = value.toFixed(2);
+    }
   }
 
   togglePasswordVisibility(): void {

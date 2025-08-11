@@ -16,7 +16,6 @@ export class DebtsListComponent extends BaseComponent {
   debtsDto: DebtDtoModel[] = [];
   tableData: TableDataModel;
   tableButtons: TableButtonModel[] = [];
-  currentPage: number = 1;
 
   private _onAcceptSubscription: Subscription;
   private _selectedDebt: DebtDtoModel | null = null;
@@ -27,7 +26,7 @@ export class DebtsListComponent extends BaseComponent {
   }
 
   ngOnInit(): void {
-    this._getAllDebts();
+    this._getAllDebts({ page: 0, pageSize: 10, filterValue: '' });
     this._buildSubscriptions();
     this._initColumns();
   }
@@ -63,8 +62,12 @@ export class DebtsListComponent extends BaseComponent {
     });
   }
 
-  private _getAllDebts(page: number = 0, size: number = 10, filterValue: string | null = null): void {
-    this._debtService.getAllDebts(page, size, filterValue).subscribe((resp) => {
+  getDebts(tablePageModel: TablePageModel) {
+    this._getAllDebts(tablePageModel);
+  }
+
+  private _getAllDebts(tablePageModel: TablePageModel): void {
+    this._debtService.getAllDebts(tablePageModel).subscribe((resp) => {
       if (resp.debts.length === 0) {
         this.debtsDto = [];
         this.tableData = {
@@ -98,18 +101,9 @@ export class DebtsListComponent extends BaseComponent {
       if (resp.success) {
         this._alertService.setAlerts(this._alertService.mapMessages([resp.message]));
       }
-      this._getAllDebts();
+      this._getAllDebts({ page: 0, pageSize: 10 });
     }
     );
-  }
-
-  getCurrentPage(pageInfo: TablePageModel) {
-    this._getAllDebts(pageInfo.page, pageInfo.pageSize);
-  }
-
-  filter(pageInfo: TablePageModel) {
-    const { page, pageSize, filterValue } = pageInfo;
-    this._getAllDebts(page, pageSize, filterValue);
   }
 
   edit(debt: DebtDtoModel) { 

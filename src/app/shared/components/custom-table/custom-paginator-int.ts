@@ -1,4 +1,4 @@
-import { Injectable, ChangeDetectorRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MatPaginatorIntl } from "@angular/material/paginator";
 import { TranslateService } from "@ngx-translate/core";
 

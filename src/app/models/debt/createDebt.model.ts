@@ -8,5 +8,5 @@ export interface CreateDebtModel {
   collector: string;
   amount: number | null;
   termInMonths: number | null;
-  calcWithAmount: boolean;
+  payed: boolean;
 }

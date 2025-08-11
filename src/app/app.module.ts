@@ -44,6 +44,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+/* PRIME NG */
+import { InputNumberModule } from 'primeng/inputnumber';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CalendarModule } from 'primeng/calendar';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { TableModule } from 'primeng/table';
+
 import { CustomDatePickerComponent } from './shared/components/custom-date-picker/custom-date-picker.component';
 import { DebtsViewComponent } from './views/debts-view/debts-view.component';
 import { CustomTableComponent } from './shared/components/custom-table/custom-table.component';
@@ -126,6 +133,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatNativeDateModule,
     MatSlideToggleModule,
     NgxMatSelectSearchModule,
+    InputNumberModule,
+    AutoCompleteModule,
+    CalendarModule,
+    InputSwitchModule,
+    TableModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

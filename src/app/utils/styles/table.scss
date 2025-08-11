@@ -1,0 +1,39 @@
+.p-datatable {
+  & >.p-datatable-wrapper, .p-paginator-bottom {
+    border-radius: 15px 15px 0 0;
+  }
+  .p-datatable-thead {
+    & > tr > th {
+      background-color: $darkBlue;
+      color: $white;
+    }
+  }
+  .p-paginator {
+    border-radius: 0 0 15px 15px;
+  } 
+}
+
+.p-paginator {
+  border-radius: 0;
+  .p-paginator-pages {
+    .p-paginator-page {
+      &.p-highlight {
+        background-color: $darkBlue;
+        color: $white;
+        border-radius: 50%;
+        transition: all .4s ease-in-out;
+        &:hover {
+          background-color: $darkBlueHover;
+        }  
+      }
+      &:not(.p-highlight):hover {
+        border-radius: 50%;
+      }
+    }  
+  }
+  .p-dropdown-items-wrapper {
+    ul {
+      padding-left: 0;
+    }
+  } 
+}

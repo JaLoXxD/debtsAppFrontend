@@ -4,33 +4,11 @@
   display: block;
 }
 
-.without-icon {
-  input {
-    padding: 15px 15px 7.5px;
-  }
-  i.label {
-    padding-left: 15px;
-  }
-  input[type="password"] {
-    padding: 15px 40px 7.5px 15px;
-    button {
-      position: absolute;
-      height: 100%;
-      width: 40px;
-      margin: 0;
-      right: 0;
-      color: $lightBlue;
-      border: 0;
-      background-color: transparent;
-    }
-  }
-}
-
 .currency {
   position: absolute;
   z-index: 10;
-  left: 15px;
-  top: 58%;
+  left: 16px;
+  top: 50%;
   transform: translateY(-50%);
   font-weight: 500;
 }
@@ -53,7 +31,7 @@
 .with-static-label {
   .currency {
     color: $gray;
-    top: 65%;
+    top: 68%;
     font-size: 16px;
     transform: translateY(-50%);
   }
@@ -73,11 +51,15 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-/* Firefox */
-input[type=number] {
-  appearance: textfield;
-  position: relative;
-  &.with-content {
-    padding: 15px 25px 7.5px;
+p-inputnumber {
+  width: 100%;
+}
+::ng-deep {
+  width: 100%;
+  .p-inputnumber {
+    width: 100%;
+    input {
+      padding-left: 25px;
+    }
   }
 }
